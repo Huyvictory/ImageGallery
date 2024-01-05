@@ -9,7 +9,11 @@ public static class Config
         new IdentityResource[]
         {
             new IdentityResources.OpenId(),
-            new IdentityResources.Profile()
+            new IdentityResources.Profile(),
+            new IdentityResource(
+                "roles",
+                "Your role(s)",
+                new [] {"role"})
         };
 
     public static IEnumerable<ApiScope> ApiScopes =>
@@ -28,7 +32,7 @@ public static class Config
                     {
                         "https://localhost:7184/signin-oidc"
                     },
-                    PostLogoutRedirectUris = 
+                    PostLogoutRedirectUris =
                     {
                         "https://localhost:7184/signout-callback-oidc"
                     },
@@ -36,6 +40,7 @@ public static class Config
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        "roles"
                     },
                     ClientSecrets =
                     {
